@@ -1,4 +1,5 @@
 use std::io;
+use std::cmp::Ordering;
 use rand::RngExt;
 
 fn main() {
@@ -7,7 +8,7 @@ fn main() {
     let mut rng = rand::rng();
     let secret_number = rng.random_range(1..=100);
 
-    println!("The secret number is {secret_number}");
+    // println!("The secret number is {secret_number}");
 
     loop {
         println!("Input your guess");
@@ -24,9 +25,9 @@ fn main() {
     };
 
     match guess.cmp(&secret_number) {
-        std::cmp::Ordering::Less => println!("Too small!"),
-        std::cmp::Ordering::Greater => println!("Too Big!"),
-        std::cmp::Ordering::Equal => {
+        Ordering::Less => println!("Too small!"),
+        Ordering::Greater => println!("Too Big!"),
+        Ordering::Equal => {
             println!("You Win!");
             break;
         }
